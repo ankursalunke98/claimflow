@@ -13,6 +13,17 @@ spring:
     open-in-view: false
   kafka:
     bootstrap-servers: localhost:9092
+    producer:
+      acks: all
+      compression-type: lz4
+      properties:
+        enable.idempotence: true
+        linger.ms: 10
+
+claimflow:
+  ingestion:
+    source-dir: data/synthea/fhir
+    topic: claims.raw
 
 management:
   endpoints:
